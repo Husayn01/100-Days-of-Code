@@ -4,12 +4,15 @@ print(logo)
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
+new_word = []
 
 def encrpyt(direction_arg, text_arg, shift_arg):
-    for i in alphabet:
-        print(alphabet.index(i))
-    print("Hello")
-
+    for i in text:
+        if i in alphabet:
+            new_index = alphabet.index(i) + shift
+            new_word.append(alphabet[new_index])
+            print(alphabet.index(i) + shift)
+    print("".join(new_word))
 encrpyt(direction_arg= direction, text_arg=text, shift_arg=shift)
 
  
