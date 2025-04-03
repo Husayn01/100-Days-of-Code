@@ -24,7 +24,6 @@ def generate_random_word():
         canvas.itemconfig(title, text="French", fill="black")
         canvas.itemconfig(word, text=current_word["French"], fill="black")
         canvas.itemconfig(card_image, image=front_card_img)
-        print(current_word)
 
         # Start the 3-second timer to flip the card
         window.after(3000, flip_card)
@@ -34,10 +33,10 @@ def generate_random_word():
 
 def remove_words():
     global data
-    data = data[data['French'] != current_word['French']]  # Remove the current word
-    print("Updated data:")
-    print(data)
-
+    try:
+        data = data[data['French'] != current_word['French']]  # Remove the current word
+    except KeyError:
+        print("No words left")
     data.to_csv("./Day 31/data/updated_french_words.csv", index=False)  # Saving to new CSV
     print("Updated data saved to 'updated_french_words.csv'")
 
